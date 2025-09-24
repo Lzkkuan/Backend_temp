@@ -1,0 +1,33 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    restart: always
+    volumes:
+      - .env/.ssl_certs:/etc/cloudflare/live
+    ports:
+      - '80:80'
+      - '443:443'
+    env_file:
+      - .env/.global_env
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'curl --silent --fail --insecure https://localhost/health-check || exit 1',
+        ]
+      interval: 1m
+      timeout: 1m
+      retries: 3
+    command: /app/start.sh
+
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service-backend
+    env_file:
+      - .env/.user_env
+      - .env/.global_env
+      - .env/.database_env
+      - .env/.authentication_env
