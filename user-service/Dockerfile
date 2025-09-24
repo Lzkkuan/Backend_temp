@@ -3,12 +3,12 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install deps (including dev deps for TS build)
-COPY package*.json ./
+COPY user-service/package*.json ./
 RUN npm ci
 
 # Copy source and build
-COPY tsconfig.json ./
-COPY src ./src
+COPY user-service/tsconfig.json ./
+COPY user-service/src ./src
 RUN npm run build
 
 # ---- Runtime stage ----
@@ -17,7 +17,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Install only production deps
-COPY package*.json ./
+COPY user-service/package*.json ./
 RUN npm ci --omit=dev
 
 # Copy built artifacts
