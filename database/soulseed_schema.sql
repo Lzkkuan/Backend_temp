@@ -4,6 +4,7 @@ SET TIME ZONE 'Asia/Singapore';
 CREATE TABLE IF NOT EXISTS roles (
   role TEXT PRIMARY KEY
 );
+
 INSERT INTO roles (role) VALUES
   ('user'), ('admin')
 ON CONFLICT DO NOTHING;

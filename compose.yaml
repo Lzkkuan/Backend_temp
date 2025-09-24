@@ -31,3 +31,24 @@ services:
       - .env/.global_env
       - .env/.database_env
       - .env/.authentication_env
+
+  # ai-service:
+  #   build:
+  #     context: ./ai-service
+  #   container_name: ai-service-backend
+  #   env_file:
+  #     - .env/.user_env
+  #     - .env/.global_env
+  #     - .env/.database_env
+  #     - .env/.authentication_env
+
+  # journal-service:
+  #   build:
+  #     context: ./journal-service
+  #   container_name: journal-service-backend
+  #   env_file:
+  #     - .env/.user_env
+  #     - .env/.global_env
+  #     - .env/.database_env
+  #     - .env/.authentication_env
+

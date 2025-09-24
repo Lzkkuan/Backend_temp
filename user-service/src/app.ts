@@ -4,8 +4,6 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
-import aiRoutes from "./ai-service/src/routes/aiRoutes";
-
 dotenv.config();
 
 const app: Application = express();
@@ -14,9 +12,6 @@ app.use(helmet());
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-
-// (Temporarily remove auth & anything DB-related)
-app.use("/api/ai", aiRoutes);
 
 // Health-check only
 app.get("/health-check", (_req: Request, res: Response) => {
