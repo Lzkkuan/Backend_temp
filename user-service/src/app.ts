@@ -4,7 +4,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
-import aiRoutes from "./routes/aiRoutes";
+import aiRoutes from "./ai-service/src/routes/aiRoutes";
 
 dotenv.config();
 
