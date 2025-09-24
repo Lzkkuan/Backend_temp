@@ -4,6 +4,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
     "dev": "nodemon --watch src --ext ts,tsx --exec \"node --enable-source-maps --require ts-node/register/transpile-only src/server.ts\""
   },
   "dependencies": {
