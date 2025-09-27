@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Install deps (including dev deps for TS build)
 COPY ai-service/package*.json ./
-RUN npm Install
+RUN npm install
 
 # Copy source and build
 COPY ai-service/tsconfig.json ./
