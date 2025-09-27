@@ -18,7 +18,7 @@ ENV NODE_ENV=production
 
 # Install only production deps
 COPY ai-service/package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
 # Copy built artifacts
 COPY --from=builder /app/dist ./dist
