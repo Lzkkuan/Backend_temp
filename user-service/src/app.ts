@@ -4,6 +4,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+import authRoutes from "./routes/authRoutes";   // ✅ add this
+
 dotenv.config();
 
 const app: Application = express();
@@ -17,5 +19,8 @@ app.use(cookieParser());
 app.get("/health-check", (_req: Request, res: Response) => {
   res.status(200).json({ status: "success", message: "OK" });
 });
+
+// ✅ mount authentication routes
+app.use("/auth", authRoutes);
 
 export default app;
