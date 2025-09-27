@@ -1,5 +1,5 @@
 # Use nginx image to serve the build files
-FROM nginx:1.28-alpine3.21
+FROM nginx:1.27-alpine
 
 # Add bash for boot cmd
 RUN apk add bash
@@ -32,5 +32,7 @@ RUN touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
 #     && chmod 644 /var/log/nginx/*log
 
 USER nginx
+
+EXPOSE 8080
 
 CMD ["nginx", "-g", "'daemon off;'"]
