@@ -47,9 +47,12 @@ export async function getGuidanceLLM(userText: string): Promise<string> {
   };
 
   const res = await api.post("/chat/completions", body);
-
-  const text = res.data?.choices?.[0]?.message?.content;
-  if (!text) throw new Error("Empty response from OpenRouter");
+  const choice = res.data?.choices?.[0];
+  const text = choice?.message?.content;
+  if (!text) {
+    console.error("[llmClient] Bad response from OpenRouter:", JSON.stringify(res.data, null, 2));
+    throw new Error("Empty response from OpenRouter");
+  }
 
   return normalizeOneLine(text);
 }
