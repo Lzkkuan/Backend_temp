@@ -1,7 +1,15 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express, { Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import aiRoutes from "./routes/aiRoutes";
+import { provider as LLM_PROVIDER } from "./clients/llmClient";
+console.log(
+  `[aiService] provider=${LLM_PROVIDER} HF_MODEL=${process.env.HF_MODEL ?? "(unset)"} HF_TOKEN=${process.env.HF_TOKEN ? "present" : "missing"}`
+);
+
 
 const app = express();
 app.use(helmet());
