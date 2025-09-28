@@ -6,8 +6,9 @@ import cors from "cors";
 import helmet from "helmet";
 import aiRoutes from "./routes/aiRoutes";
 console.log(
-  `[aiService] provider= openrouter HF_MODEL=${process.env.HF_MODEL ?? "(unset)"} HF_TOKEN=${process.env.HF_TOKEN ? "present" : "missing"}`
+  `[aiService] provider=openrouter OR_MODEL=${process.env.OPENROUTER_MODEL ?? "(unset)"} OR_TOKEN=${process.env.OPENROUTER_API_KEY ? "present" : "missing"}`
 );
+
 
 
 const app = express();
