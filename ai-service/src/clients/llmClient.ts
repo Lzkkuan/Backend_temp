@@ -60,8 +60,11 @@ export async function getGuidanceLLM(userText: string): Promise<string> {
 // ---------- Utils ----------
 function normalizeOneLine(s: string): string {
   return s
+    .replace(/^<s>\s*/i, "")       // remove leading <s>
+    .replace(/^\[OUT\]\s*/i, "")   // remove leading [OUT]
     .replace(/[\r\n]+/g, " ")
     .replace(/\s{2,}/g, " ")
     .replace(/^[*\-•]\s*/g, "")
     .trim();
 }
+
