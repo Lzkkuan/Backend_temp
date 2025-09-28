@@ -17,6 +17,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Install only production deps
+
 COPY ai-service/package*.json ./
 RUN npm install --omit=dev
 
@@ -25,6 +26,7 @@ COPY --from=builder /app/dist ./dist
 
 # (If you have any runtime assets/config, copy them too)
 # COPY .env.production ./.env  # optional
+
 
 EXPOSE 3001
 CMD ["node", "dist/server.js"]
